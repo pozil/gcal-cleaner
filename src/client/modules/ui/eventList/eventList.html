@@ -1,0 +1,48 @@
+<template>
+    <h2>Event List</h2>
+    <input
+        type="search"
+        value={searchTerm}
+        onchange={handleSearchTermChange}
+        placeholder="Filter events"
+    />
+    <p>
+        Selected items: {selectedCount}/{events.length}&nbsp;
+        <button type="button" onclick={handleSelectAllClick}>
+            Select all</button
+        >&nbsp;
+        <button type="button" onclick={handleSelectNoneClick}>
+            Select none
+        </button>
+    </p>
+    <p>
+        <button
+            type="button"
+            onclick={handleDeleteClick}
+            disabled={hasNoSelection}
+        >
+            Delete
+        </button>
+    </p>
+
+    <ui-spinner if:true={isLoading}></ui-spinner>
+    <template if:false={isLoading}>
+        <table>
+            <template for:each={events} for:item="event">
+                <tr key={event.id}>
+                    <td>
+                        <input
+                            type="checkbox"
+                            checked={event.selected}
+                            onchange={handleEventCheckboxChange}
+                            data-id={event.id}
+                        />
+                    </td>
+                    <td class="start">{event.start}</td>
+                    <td class="end">{event.end}</td>
+                    <td class="summary">{event.summary}</td>
+                </tr>
+            </template>
+        </table>
+    </template>
+</template>

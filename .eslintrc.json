@@ -1,0 +1,22 @@
+{
+    "extends": ["@salesforce/eslint-config-lwc/recommended"],
+    "rules": {
+        "@lwc/lwc/no-async-operation": "off",
+        "@lwc/lwc/no-unknown-wire-adapters": "off",
+        "@lwc/lwc/no-inner-html": "warn",
+        "@lwc/lwc/no-document-query": "warn"
+    },
+    "overrides": [
+        {
+            "files": [
+                "src/server/**",
+                "scripts/server.js",
+                "jest.config.js",
+                "lwc-services.config.js"
+            ],
+            "env": {
+                "node": true
+            }
+        }
+    ]
+}

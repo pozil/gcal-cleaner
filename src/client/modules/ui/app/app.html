@@ -1,0 +1,20 @@
+<template>
+    <ui-spinner if:true={isLoading}></ui-spinner>
+    <template if:false={isLoading}>
+        <h1>Gcal Cleaner</h1>
+
+        <template if:true={user}>
+            <img src={user.picture} alt="User avatar" />
+            <p>
+                Hi {user.given_name} ({user.email})
+                <a href="/auth/logout">Log Out</a>
+            </p>
+            <ui-event-list></ui-event-list>
+        </template>
+        <template if:false={user}>
+            <p>
+                <a href="/auth/login">Log In</a>
+            </p>
+        </template>
+    </template>
+</template>
