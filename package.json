@@ -8,17 +8,17 @@
         "compression": "^1.7.4",
         "express": "^4.17.1",
         "express-session": "^1.17.1",
-        "helmet": "^3.23.3",
+        "helmet": "^4.2.0",
         "dotenv": "^8.2.0",
-        "googleapis": "^55.0.0"
+        "googleapis": "^66.0.0"
     },
     "devDependencies": {
-        "eslint": "^7.5.0",
-        "husky": "^4.2.5",
-        "lint-staged": "^10.2.11",
-        "lwc-services": "^2.1.4",
+        "eslint": "^7.15.0",
+        "husky": "^4.3.5",
+        "lint-staged": "^10.5.3",
+        "lwc-services": "^2.3.0",
         "npm-run-all": "^4.1.5",
-        "prettier": "^2.0.5"
+        "prettier": "^2.2.1"
     },
     "engines": {
         "node": ">=10.13.0",
