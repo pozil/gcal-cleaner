@@ -18,7 +18,16 @@ if (!Configuration.isValid()) {
 
 // Configure and start express
 const app = express();
-app.use(helmet());
+app.use(
+    helmet({
+        contentSecurityPolicy: {
+            directives: {
+                ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+                'img-src': ["'self'", 'lh3.googleusercontent.com']
+            }
+        }
+    })
+);
 app.use(compression());
 app.use(express.json());
 app.use(
