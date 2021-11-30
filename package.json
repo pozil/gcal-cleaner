@@ -1,7 +1,7 @@
 {
     "name": "gcal-cleaner",
     "description": "Google Calendar cleaner app",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "author": "pozil",
     "bugs": "https://github.com/pozil/gcal-cleaner/issues",
     "dependencies": {
@@ -9,16 +9,16 @@
         "dotenv": "^10.0.0",
         "express": "^4.17.1",
         "express-session": "^1.17.2",
-        "googleapis": "^83.0.0",
+        "googleapis": "^92.0.0",
         "helmet": "^4.6.0"
     },
     "devDependencies": {
         "eslint": "^7.32.0",
-        "husky": "^7.0.1",
-        "lint-staged": "^11.1.2",
-        "lwc-services": "^3.1.2",
+        "husky": "^7.0.4",
+        "lint-staged": "^12.1.2",
+        "lwc-services": "^3.2.2",
         "npm-run-all": "^4.1.5",
-        "prettier": "^2.3.2"
+        "prettier": "^2.5.0"
     },
     "homepage": "https://github.com/pozil/gcal-cleaner",
     "keywords": [
