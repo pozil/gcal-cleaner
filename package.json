@@ -6,19 +6,19 @@
     "bugs": "https://github.com/pozil/gcal-cleaner/issues",
     "dependencies": {
         "compression": "^1.7.4",
-        "dotenv": "^10.0.0",
-        "express": "^4.17.1",
+        "dotenv": "^16.0.0",
+        "express": "^4.17.3",
         "express-session": "^1.17.2",
-        "googleapis": "^92.0.0",
-        "helmet": "^4.6.0"
+        "googleapis": "^97.0.0",
+        "helmet": "^5.0.2"
     },
     "devDependencies": {
         "eslint": "^7.32.0",
         "husky": "^7.0.4",
-        "lint-staged": "^12.1.2",
+        "lint-staged": "^12.3.7",
         "lwc-services": "^3.2.2",
         "npm-run-all": "^4.1.5",
-        "prettier": "^2.5.0"
+        "prettier": "^2.6.0"
     },
     "homepage": "https://github.com/pozil/gcal-cleaner",
     "keywords": [
