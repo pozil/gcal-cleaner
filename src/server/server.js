@@ -5,7 +5,8 @@ const express = require('express'),
     path = require('path'),
     Configuration = require('./utils/configuration.js'),
     AuthRestResource = require('./rest/auth.js'),
-    EventRestResource = require('./rest/events.js');
+    EventRestResource = require('./rest/events.js'),
+    ConfigRestResource = require('./rest/config.js');
 
 // Load and check config
 require('dotenv').config();
@@ -66,6 +67,14 @@ app.get('/api/events', (request, response) => {
 });
 app.delete('/api/events', (request, response) => {
     eventRest.delete(request, response);
+});
+
+/**
+ * Config REST resources
+ */
+const configRest = new ConfigRestResource();
+app.get('/api/config', (request, response) => {
+    configRest.getConfig(request, response);
 });
 
 // HTTP Listen

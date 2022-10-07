@@ -36,3 +36,9 @@ img {
 .greeting {
     height: 75px;
 }
+.two-cols {
+    display: flex;
+}
+.two-cols > div {
+    width: 50%;
+}

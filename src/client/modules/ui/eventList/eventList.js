@@ -1,31 +1,19 @@
-import { LightningElement, track, wire } from 'lwc';
-import { getEvents, deleteEvents } from 'services/events';
+import { LightningElement, api, track } from 'lwc';
 
 export default class EventList extends LightningElement {
-    isLoading = true;
-    @track events = [];
-    searchTerm = '';
+    @track _events;
 
-    @wire(getEvents, { searchTerm: '$searchTerm' })
-    getEvents({ error, data }) {
-        if (data) {
-            this.events = data;
-            this.isLoading = false;
-        } else if (error) {
-            console.error(error);
-            this.isLoading = false;
-        }
+    @api
+    set events(value) {
+        this._events = value ? value.map((e) => ({ ...e })) : undefined;
     }
-
-    handleSearchTermChange(event) {
-        this.searchTerm = event.target.value;
-        this.events = [];
-        this.isLoading = true;
+    get events() {
+        return this._events;
     }
 
     handleEventCheckboxChange(event) {
         const eventId = event.target.dataset.id;
-        const calEvent = this.events.find((item) => item.id === eventId);
+        const calEvent = this._events.find((item) => item.id === eventId);
         calEvent.selected = !calEvent.selected;
     }
 
@@ -39,25 +27,17 @@ export default class EventList extends LightningElement {
 
     handleDeleteClick() {
         const selectedEvents = this.getSelectedEvents();
-        const deletedEventIds = selectedEvents.map((event) => event.id);
-        deleteEvents(deletedEventIds)
-            .then(() => {
-                this.events = this.events.filter((item) => {
-                    const foundIndex = deletedEventIds.indexOf(item.id);
-                    if (foundIndex === -1) {
-                        return true;
-                    }
-                    deletedEventIds.splice(foundIndex, 1);
-                    return false;
-                });
-            })
-            .catch((err) => {
-                console.error('Failed to delete events', err);
-            });
+        const eventIds = selectedEvents.map((event) => event.id);
+        const deleteEvent = new CustomEvent('delete', {
+            detail: {
+                eventIds
+            }
+        });
+        this.dispatchEvent(deleteEvent);
     }
 
     toggleEventSelection(isSelected) {
-        this.events = this.events.map((item) => {
+        this._events = this._events.map((item) => {
             const updatedItem = item;
             updatedItem.selected = isSelected;
             return updatedItem;
@@ -65,7 +45,12 @@ export default class EventList extends LightningElement {
     }
 
     getSelectedEvents() {
-        return this.events.filter((item) => item.selected);
+        if (this.isLoading) return [];
+        return this._events.filter((item) => item.selected);
+    }
+
+    get eventCount() {
+        return this.isLoading ? '-' : this._events.length;
     }
 
     get selectedCount() {
@@ -74,5 +59,9 @@ export default class EventList extends LightningElement {
 
     get hasNoSelection() {
         return this.getSelectedEvents().length === 0;
+    }
+
+    get isLoading() {
+        return this._events === undefined;
     }
 }

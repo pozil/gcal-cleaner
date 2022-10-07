@@ -1,16 +1,18 @@
 <template>
-    <h2>Event List</h2>
-    <input
-        type="search"
-        value={searchTerm}
-        onchange={handleSearchTermChange}
-        placeholder="Filter events"
-    />
     <p>
-        Selected items: {selectedCount}/{events.length}&nbsp;
-        <button type="button" onclick={handleSelectAllClick}>Select all</button
+        Selected items: {selectedCount}/{eventCount}&nbsp;
+        <button
+            type="button"
+            onclick={handleSelectAllClick}
+            disabled={isLoading}
+        >
+            Select all</button
         >&nbsp;
-        <button type="button" onclick={handleSelectNoneClick}>
+        <button
+            type="button"
+            onclick={handleSelectNoneClick}
+            disabled={isLoading}
+        >
             Select none
         </button>
     </p>
@@ -27,7 +29,7 @@
     <ui-spinner if:true={isLoading}></ui-spinner>
     <template if:false={isLoading}>
         <table>
-            <template for:each={events} for:item="event">
+            <template for:each={_events} for:item="event">
                 <tr key={event.id}>
                     <td>
                         <input

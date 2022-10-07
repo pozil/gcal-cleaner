@@ -9,7 +9,31 @@
                 Hi {user.given_name} ({user.email})
                 <a href="/auth/logout">Log Out</a>
             </p>
-            <ui-event-list></ui-event-list>
+            <form onsubmit={handleSearch}>
+                <input
+                    type="search"
+                    value={searchTerm}
+                    onchange={handleSearchTermChange}
+                    placeholder="Filter events"
+                />
+                <button>Search</button>
+            </form>
+            <div class="two-cols">
+                <div>
+                    <h2>Events</h2>
+                    <ui-event-list
+                        events={events}
+                        ondelete={handleDeleteEvents}
+                    ></ui-event-list>
+                </div>
+                <div>
+                    <h2>Spam</h2>
+                    <ui-event-list
+                        events={spamEvents}
+                        ondelete={handleDeleteEvents}
+                    ></ui-event-list>
+                </div>
+            </div>
         </template>
         <template if:false={user}>
             <p>

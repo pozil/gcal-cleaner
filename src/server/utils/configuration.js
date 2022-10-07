@@ -30,4 +30,11 @@ module.exports = class Configuration {
             process.env.IS_HTTPS.toLowerCase() === 'false'
         );
     }
+
+    static getSpamKeywords() {
+        const { SPAM_KEYWORDS } = process.env;
+        return SPAM_KEYWORDS
+            ? SPAM_KEYWORDS.split(',').map((key) => key.trim())
+            : [];
+    }
 };
