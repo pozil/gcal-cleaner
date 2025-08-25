@@ -22,10 +22,12 @@ export default class App extends LightningElement {
         } finally {
             this.isLoading = false;
         }
-        try {
-            await this.loadEvents('');
-        } catch (error) {
-            console.error(error);
+        if (this.user) {
+            try {
+                await this.loadEvents('');
+            } catch (error) {
+                console.error(error);
+            }
         }
     }
 

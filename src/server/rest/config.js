@@ -1,6 +1,6 @@
-const Configuration = require('../utils/configuration');
+import Configuration from '../utils/configuration.js';
 
-module.exports = class ConfigRestResource {
+export default class ConfigRestResource {
     /**
      * Get config
      */
@@ -10,4 +10,4 @@ module.exports = class ConfigRestResource {
         };
         response.send(config);
     }
-};
+}

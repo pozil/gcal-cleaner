@@ -1,4 +1,4 @@
-const GoogleService = require('../utils/google.js');
+import GoogleService from '../utils/google.js';
 
 const formatEventDate = (eventBoundary) => {
     if (eventBoundary.date) {
@@ -11,7 +11,7 @@ const formatEventDate = (eventBoundary) => {
 
 const PAGE_SIZE = 2;
 
-module.exports = class EventRestResource {
+export default class EventRestResource {
     /**
      * Search endpoint
      */
@@ -75,7 +75,6 @@ module.exports = class EventRestResource {
                 for (; pagedIds.length < PAGE_SIZE && ids.length > 0; ) {
                     pagedIds.push(ids.pop());
                 }
-                // eslint-disable-next-line no-await-in-loop
                 await Promise.all(
                     pagedIds.map((pagedId) => {
                         return calendar.events.delete({
@@ -92,4 +91,4 @@ module.exports = class EventRestResource {
             response.status(500).send(message);
         }
     }
-};
+}

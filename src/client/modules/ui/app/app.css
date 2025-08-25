@@ -13,6 +13,10 @@
     display: inline-block;
     margin-top: 1em;
 }
+.inline-link {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
 .info {
     color: black;
     background-color: #e4f2f8;

@@ -1,4 +1,4 @@
-module.exports = class Configuration {
+export default class Configuration {
     static isValid() {
         return (
             process.env.GOOGLE_CLIENT_ID &&
@@ -37,4 +37,4 @@ module.exports = class Configuration {
             ? SPAM_KEYWORDS.split(',').map((key) => key.trim())
             : [];
     }
-};
+}

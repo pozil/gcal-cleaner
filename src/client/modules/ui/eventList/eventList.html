@@ -26,8 +26,8 @@
         </button>
     </p>
 
-    <ui-spinner if:true={isLoading}></ui-spinner>
-    <template if:false={isLoading}>
+    <ui-spinner lwc:if={isLoading}></ui-spinner>
+    <template lwc:else>
         <table>
             <template for:each={_events} for:item="event">
                 <tr key={event.id}>

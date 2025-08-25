@@ -1,6 +1,6 @@
-const GoogleService = require('../utils/google.js');
+import GoogleService from '../utils/google.js';
 
-module.exports = class AuthRestResource {
+export default class AuthRestResource {
     /**
      * Login endpoint
      */
@@ -55,4 +55,4 @@ module.exports = class AuthRestResource {
             response.status(500).send('Failed to get user information.');
         }
     }
-};
+}

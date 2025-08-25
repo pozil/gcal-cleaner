@@ -7,5 +7,5 @@ lib/
 # Default dist folder
 dist/
 
-# Default resources folder
-src/client/resources
+# Default assets folder
+src/client/assets

@@ -1,13 +1,13 @@
 <template>
-    <ui-spinner if:true={isLoading}></ui-spinner>
-    <template if:false={isLoading}>
+    <ui-spinner lwc:if={isLoading}></ui-spinner>
+    <template lwc:else>
         <h1>Gcal Cleaner</h1>
 
-        <template if:true={user}>
+        <template lwc:if={user}>
             <img src={user.picture} alt="User avatar" />
             <p>
                 Hi {user.given_name} ({user.email})
-                <a href="/auth/logout">Log Out</a>
+                <a href="/auth/logout" class="inline-link">Log Out</a>
             </p>
             <form onsubmit={handleSearch}>
                 <input
@@ -35,7 +35,7 @@
                 </div>
             </div>
         </template>
-        <template if:false={user}>
+        <template lwc:else>
             <p>
                 <a href="/auth/login">Log In</a>
             </p>

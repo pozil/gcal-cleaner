@@ -4,20 +4,12 @@ logs
 *-debug.log
 *-error.log
 
-# Standard lib folder
-/lib
-
-# Standard dist folder
-/dist
-
 # Tooling files
 node_modules
+.cursor
 
-# Temp directory
-/tmp
-
-# Jest coverage folder
-/coverage
+# LWR cache
+__lwr_cache__
 
 # MacOS system files
 .DS_Store

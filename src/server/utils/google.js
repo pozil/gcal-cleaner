@@ -1,8 +1,8 @@
-const https = require('https'),
-    { google } = require('googleapis'),
-    Configuration = require('./configuration.js');
+import https from 'https';
+import { google } from 'googleapis';
+import Configuration from './configuration.js';
 
-module.exports = class GoogleService {
+export default class GoogleService {
     constructor() {
         this._client = GoogleService._getOAuthClient();
     }
@@ -107,4 +107,4 @@ module.exports = class GoogleService {
             });
         });
     }
-};
+}
